@@ -127,6 +127,13 @@ class LinkedList:
             self.head = self.head.next
             return
 
+        previous = self.get_at(index - 1)
+
+        if not previous or not previous.next:
+            return
+
+        previous.next = previous.next.next
+
 
 list = LinkedList()
 list.insert_first(22)
@@ -138,6 +145,3 @@ print(list.get_last())
 list.insert_first(56)
 list.insert_last(101)
 print(list.get_last())
-
-
-# list.
