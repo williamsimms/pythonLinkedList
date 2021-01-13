@@ -84,10 +84,48 @@ class LinkedList:
     def insert_last(self, data):
         if not self.head:
             self.head = Node(data)
+            return
 
         last = self.get_last()
 
         last.next = Node(data)
+
+    def get_at(self, index):
+        if not self.head:
+            return
+
+        counter = 0
+        node = self.head
+
+        while node:
+            if index == counter:
+                return node
+
+            node = node.next
+            counter += 1
+
+        return None
+
+    def insert_at(self, index, data):
+        if not self.head:
+            self.head = Node(data)
+            return
+
+        if index == 0:
+            self.head = Node(data, self.head)
+            return
+
+        previous_node = self.get_at(index - 1)
+        node = Node(data, previous_node.next)
+        previous_node.next = node
+
+    def remove_at(self, index):
+        if not self.head:
+            return
+
+        if (index == 0):
+            self.head = self.head.next
+            return
 
 
 list = LinkedList()
@@ -100,5 +138,6 @@ print(list.get_last())
 list.insert_first(56)
 list.insert_last(101)
 print(list.get_last())
+
 
 # list.
