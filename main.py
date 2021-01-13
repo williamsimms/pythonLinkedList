@@ -32,12 +32,42 @@ class LinkedList:
         return counter
 
     def get_first(self):
+        if not self.head:
+            return
+
         return self.head
+
+    def get_last(self):
+        if not self.head:
+            return
+
+        node = self.head
+
+        while node:
+            if node.next == None:
+                return node
+
+            node = node.next
+
+            return node
+
+    def clear(self):
+        self.head = None
+
+    def remove_first(self):
+        if not self.head:
+            return
+
+        self.head = self.head.next
+
+
+    def remove_last(self):
+        if not self.head:
+            return
 
 
 list = LinkedList()
 list.insert_first(22)
 list.insert_first(26)
 list.insert_first(76)
-print(list.length())
-print(list.get_first())
+print(list.get_last())
