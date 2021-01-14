@@ -15,6 +15,12 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def __str__(self):
+        return str(self.head)
+
+    def __repr__(self):
+        return str(self.head)
+
     def insert_first(self, data):
         self.head = Node(data, self.head)
 
@@ -135,6 +141,9 @@ class LinkedList:
         previous.next = previous.next.next
 
     def reverse(self):
+        if not self.head:
+            return
+
         previous = None
         current = self.head
         next = None
@@ -158,3 +167,6 @@ print(list.get_last())
 list.insert_first(56)
 list.insert_last(101)
 print(list.get_last())
+print(list.get_first())
+list.reverse()
+print(list.get_first())
