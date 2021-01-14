@@ -156,6 +156,19 @@ class LinkedList:
 
         self.head = previous
 
+    def for_each(self, fn):
+        if not self.head:
+            return
+
+        node = self.head
+        counter = 0
+
+        while node:
+            new_data = fn(node.data, counter)
+            node.data = new_data
+            node = node.next
+            counter += 1
+
 
 list = LinkedList()
 list.insert_first(22)
@@ -169,4 +182,6 @@ list.insert_last(101)
 print(list.get_last())
 print(list.get_first())
 list.reverse()
+print(list.get_first())
+list.for_each(lambda num, index: num * 2)
 print(list.get_first())
