@@ -134,6 +134,19 @@ class LinkedList:
 
         previous.next = previous.next.next
 
+    def reverse(self):
+        previous = None
+        current = self.head
+        next = None
+
+        while current:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+
+        self.head = previous
+
 
 list = LinkedList()
 list.insert_first(22)
