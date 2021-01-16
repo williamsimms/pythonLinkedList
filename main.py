@@ -37,6 +37,9 @@ class LinkedList:
 
         return counter
 
+    def __len__(self):
+        return self.length()
+
     def get_first(self):
         if not self.head:
             return
@@ -170,18 +173,20 @@ class LinkedList:
             counter += 1
 
 
-list = LinkedList()
-list.insert_first(22)
-list.insert_first(26)
-list.insert_first(76)
-print(list.get_last())
-list.remove_last()
-print(list.get_last())
-list.insert_first(56)
-list.insert_last(101)
-print(list.get_last())
-print(list.get_first())
-list.reverse()
-print(list.get_first())
-list.for_each(lambda num, index: num * 2)
-print(list.get_first())
+linkedlist = LinkedList()
+linkedlist.insert_first(22)
+linkedlist.insert_first(26)
+linkedlist.insert_first(76)
+print(linkedlist.get_last())
+linkedlist.remove_last()
+print(linkedlist.get_last())
+linkedlist.insert_first(56)
+linkedlist.insert_last(101)
+print(linkedlist.get_last())
+print(linkedlist.get_first())
+linkedlist.reverse()
+print(linkedlist.get_first())
+linkedlist.for_each(lambda num, index: num * 2)
+print(linkedlist.get_first())
+print(linkedlist.length())
+print(len(linkedlist))
