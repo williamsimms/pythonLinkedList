@@ -115,7 +115,10 @@ class LinkedList:
 
         return None
 
-    def insert_at(self, index, data):
+    def __getitem__(self, index: int):
+        return self.get_at(index)
+
+    def insert_at(self, index: int, data):
         if not self.head:
             self.head = Node(data)
             return
@@ -128,7 +131,7 @@ class LinkedList:
         node = Node(data, previous_node.next)
         previous_node.next = node
 
-    def remove_at(self, index):
+    def remove_at(self, index: int):
         if not self.head:
             return
 
