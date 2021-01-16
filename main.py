@@ -26,7 +26,7 @@ class LinkedList:
 
     def length(self):
         if not self.head:
-            return
+            return 0
 
         node = self.head
         counter = 0
@@ -116,6 +116,9 @@ class LinkedList:
         return None
 
     def __getitem__(self, index: int):
+        if type(index) != int:
+            return
+
         return self.get_at(index)
 
     def insert_at(self, index: int, data):
@@ -176,20 +179,23 @@ class LinkedList:
             counter += 1
 
 
-linkedlist = LinkedList()
-linkedlist.insert_first(22)
-linkedlist.insert_first(26)
-linkedlist.insert_first(76)
-print(linkedlist.get_last())
-linkedlist.remove_last()
-print(linkedlist.get_last())
-linkedlist.insert_first(56)
-linkedlist.insert_last(101)
-print(linkedlist.get_last())
-print(linkedlist.get_first())
-linkedlist.reverse()
-print(linkedlist.get_first())
-linkedlist.for_each(lambda num, index: num * 2)
-print(linkedlist.get_first())
-print(linkedlist.length())
-print(len(linkedlist))
+if __name__ == '__main__':
+    linkedlist = LinkedList()
+    linkedlist.insert_first(22)
+    linkedlist.insert_first(26)
+    linkedlist.insert_first(76)
+    print(linkedlist.get_last())
+    linkedlist.remove_last()
+    print(linkedlist.get_last())
+    linkedlist.insert_first(56)
+    linkedlist.insert_last(101)
+    print(linkedlist.get_last())
+    print(linkedlist.get_first())
+    linkedlist.reverse()
+    print(linkedlist.get_first())
+    linkedlist.for_each(lambda num, index: num * 2)
+    print(linkedlist.get_first())
+    print(linkedlist.length())
+    print(len(linkedlist))
+    print(linkedlist.get_at(2))
+    print(linkedlist[2])
