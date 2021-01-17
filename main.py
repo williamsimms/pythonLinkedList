@@ -199,3 +199,4 @@ if __name__ == '__main__':
     print(len(linkedlist))
     print(linkedlist.get_at(2))
     print(linkedlist[2])
+    print(linkedlist.get_last())
