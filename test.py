@@ -11,6 +11,10 @@ class NodeTest(unittest.TestCase):
         self.assertEqual(node.data, 'a')
         self.assertEqual(node.next, 'b')
 
+    def test_print_node(self):
+        node = Node(112, None)
+        self.assertEqual(str(node), "{'data': 112, 'next': None}")
+
 
 class LinkedListTest(unittest.TestCase):
     def test_list_is_a_class(self):
@@ -214,8 +218,37 @@ class LinkedListTest(unittest.TestCase):
 
     def test_insert_at_last(self):
         linkedlist = LinkedList()
+        linkedlist.insert_last(5)
+        linkedlist.insert_last(8)
+        linkedlist.insert_last(3)
+        linkedlist.insert_at(3, 14)
+        self.assertEqual(linkedlist.get_at(0).data, 5)
+        self.assertEqual(linkedlist.get_at(1).data, 8)
+        self.assertEqual(linkedlist.get_at(2).data, 3)
+        self.assertEqual(linkedlist.get_at(3).data, 14)
+
+    def test_insert_at_when_out_of_bounds(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_last(4)
+        linkedlist.insert_last(11)
+        linkedlist.insert_at(20, 17)
+        self.assertEqual(linkedlist.get_at(0).data, 4)
+        self.assertEqual(linkedlist.get_at(1).data, 11)
+        self.assertEqual(linkedlist.get_at(2).data, 17)
+
+    def test_for_eact(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(5)
+        linkedlist.insert_first(7)
+        linkedlist.insert_first(9)
+        linkedlist.insert_first(11)
+
+        linkedlist.for_each(lambda num, index: num + 10)
+
+        self.assertTrue(linkedlist.get_at(0).data, 11)
+        self.assertTrue(linkedlist.get_at(1).data, 9)
+        self.assertTrue(linkedlist.get_at(2).data, 7)
+        self.assertTrue(linkedlist.get_at(3).data, 5)
 
 
 unittest.main()
-
-# {'data': 112, 'next': None}

@@ -130,7 +130,7 @@ class LinkedList:
             self.head = Node(data, self.head)
             return
 
-        previous_node = self.get_at(index - 1)
+        previous_node = self.get_at(index - 1) or self.get_last()
         node = Node(data, previous_node.next)
         previous_node.next = node
 
