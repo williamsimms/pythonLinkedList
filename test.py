@@ -113,6 +113,76 @@ class LinkedListTest(unittest.TestCase):
         linkedlist.insert_last(11)
         self.assertEqual(linkedlist.get_last().data, 11)
 
+    def test_get_at(self):
+        linkedlist = LinkedList()
+        self.assertIsNone(linkedlist.get_at(10))
+
+        linkedlist.insert_first(2)
+        linkedlist.insert_first(6)
+        linkedlist.insert_first(8)
+        linkedlist.insert_first(4)
+
+        self.assertEqual(linkedlist.get_at(0).data, 4)
+        self.assertEqual(linkedlist.get_at(1).data, 8)
+        self.assertEqual(linkedlist.get_at(2).data, 6)
+        self.assertEqual(linkedlist.get_at(3).data, 2)
+
+    def test_get_at_magic_method(self):
+        linkedlist = LinkedList()
+        linkedlist = LinkedList()
+        self.assertIsNone(linkedlist[10])
+
+        linkedlist.insert_first(2)
+        linkedlist.insert_first(6)
+        linkedlist.insert_first(8)
+        linkedlist.insert_first(4)
+
+        self.assertEqual(linkedlist[0].data, 4)
+        self.assertEqual(linkedlist[1].data, 8)
+        self.assertEqual(linkedlist[2].data, 6)
+        self.assertEqual(linkedlist[3].data, 2)
+
+    def test_remove_at_doesnt_crash_empty(self):
+        linkedlist = LinkedList()
+        linkedlist.remove_at(10)
+        self.assertIsNone(linkedlist.head)
+
+    def test_remove_at_doesnt_crash_out_of_bounds(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(3)
+        linkedlist.remove_at(4)
+        self.assertEqual(linkedlist.head.data, 3)
+
+    def test_remove_at_first(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(4)
+        linkedlist.insert_first(7)
+        linkedlist.insert_first(3)
+        linkedlist.insert_first(1)
+        self.assertEqual(linkedlist.get_at(0).data, 1)
+        linkedlist.remove_at(0)
+        self.assertEqual(linkedlist.get_at(0).data, 3)
+
+    def test_remove_at_index(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(4)
+        linkedlist.insert_first(7)
+        linkedlist.insert_first(3)
+        linkedlist.insert_first(1)
+        self.assertEqual(linkedlist.get_at(1).data, 3)
+        linkedlist.remove_at(1)
+        self.assertEqual(linkedlist.get_at(1).data, 7)
+
+    def test_remove_at_last(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(4)
+        linkedlist.insert_first(7)
+        linkedlist.insert_first(3)
+        linkedlist.insert_first(1)
+        self.assertEqual(linkedlist.get_last().data, 4)
+        linkedlist.remove_at(3)
+        self.assertEqual(linkedlist.get_last().data, 7)
+
 
 unittest.main()
 
