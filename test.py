@@ -250,5 +250,26 @@ class LinkedListTest(unittest.TestCase):
         self.assertTrue(linkedlist.get_at(2).data, 7)
         self.assertTrue(linkedlist.get_at(3).data, 5)
 
+    def test_reverse(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(4)
+        linkedlist.insert_first(8)
+        linkedlist.insert_first(11)
+        linkedlist.insert_first(5)
+
+        self.assertEqual(linkedlist.get_at(0).data, 5)
+        self.assertEqual(linkedlist.get_at(1).data, 11)
+        self.assertEqual(linkedlist.get_at(2).data, 8)
+        self.assertEqual(linkedlist.get_at(3).data, 4)
+        self.assertEqual(linkedlist.head.data, 5)
+
+        linkedlist.reverse()
+
+        self.assertEqual(linkedlist.get_at(0).data, 4)
+        self.assertEqual(linkedlist.get_at(1).data, 8)
+        self.assertEqual(linkedlist.get_at(2).data, 11)
+        self.assertEqual(linkedlist.get_at(3).data, 5)
+        self.assertEqual(linkedlist.head.data, 4)
+
 
 unittest.main()
