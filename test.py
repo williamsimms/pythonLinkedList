@@ -81,6 +81,38 @@ class LinkedListTest(unittest.TestCase):
         linkedlist.remove_first()
         self.assertIsNone(linkedlist.head)
 
+    def test_remove_last(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(2)
+        linkedlist.insert_first(6)
+        linkedlist.insert_first(8)
+        self.assertTrue(linkedlist.length(), 3)
+        self.assertTrue(linkedlist.get_last().data, 2)
+        linkedlist.remove_last()
+        self.assertEqual(linkedlist.length(), 2)
+        self.assertTrue(linkedlist.get_last().data, 6)
+        self.assertTrue(linkedlist.head.data, 8)
+
+    def test_remove_last_no_error(self):
+        linkedlist = LinkedList()
+        linkedlist.remove_last()
+        self.assertIsNone(linkedlist.head)
+
+    def test_remove_last_node(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(2)
+        self.assertEqual(linkedlist.length(), 1)
+        linkedlist.remove_last()
+        self.assertIsNone(linkedlist.head)
+
+    def test_insert_last(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_last(5)
+        self.assertEqual(linkedlist.length(), 1)
+        linkedlist.insert_first(7)
+        linkedlist.insert_last(11)
+        self.assertEqual(linkedlist.get_last().data, 11)
+
 
 unittest.main()
 
