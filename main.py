@@ -208,6 +208,8 @@ class LinkedList:
             current = current.next
             counter += 1
 
+        return -1
+
     def contains(self, data):
         if not self.head:
             return False
@@ -225,6 +227,16 @@ class LinkedList:
     def find(self, data):
         if not self.head:
             return
+
+        current = self.head
+
+        while current:
+            if current.data == data:
+                return current
+
+            current = current.next
+
+        return None
 
 
 if __name__ == '__main__':

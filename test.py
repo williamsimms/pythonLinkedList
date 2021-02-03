@@ -271,6 +271,38 @@ class LinkedListTest(unittest.TestCase):
         self.assertEqual(linkedlist.get_at(3).data, 5)
         self.assertEqual(linkedlist.head.data, 4)
 
+    def test_find_index(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(5)
+        linkedlist.insert_first(1)
+        linkedlist.insert_first(2)
+        linkedlist.insert_first(3)
+        linkedlist.insert_first(9)
+
+        self.assertEqual(linkedlist.find_index(5), 0)
+        self.assertEqual(linkedlist.find_index(1), 1)
+        self.assertEqual(linkedlist.find_index(2), 2)
+        self.assertEqual(linkedlist.find_index(3), 3)
+        self.assertEqual(linkedlist.find_index(9), 4)
+        self.assertEqual(linkedlist.find_index(11), -1)
+
+    def test_contains(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_first(1)
+        linkedlist.insert_first(2)
+        linkedlist.insert_first(3)
+        linkedlist.insert_first(4)
+        linkedlist.insert_first(5)
+
+        self.assertTrue(linkedlist.contains(1))
+        self.assertTrue(linkedlist.contains(2))
+        self.assertTrue(linkedlist.contains(3))
+        self.assertTrue(linkedlist.contains(4))
+        self.assertTrue(linkedlist.contains(5))
+        self.assertFalse(linkedlist.contains(11))
+        self.assertFalse(linkedlist.contains(9))
+        self.assertFalse(linkedlist.contains(6))
+
 
 if __name__ == '__main__':
     unittest.main()
