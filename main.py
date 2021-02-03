@@ -1,4 +1,5 @@
 class Node:
+
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
@@ -16,6 +17,21 @@ class LinkedList:
         self.head = None
 
     def __str__(self):
+        linked_list = ''
+        if not self.head:
+            return None
+
+        current = self.head
+
+        while current:
+            linked_list += str(current.data)
+            linked_list += ' => '
+            current = current.next
+
+        linked_list += 'None'
+        return linked_list
+
+    def print(self):
         return str(self.head)
 
     def __repr__(self):
@@ -200,3 +216,6 @@ if __name__ == '__main__':
     print(linkedlist.get_at(2))
     print(linkedlist[2])
     print(linkedlist.get_last())
+    print(linkedlist)
+    linkedlist.reverse()
+    print(linkedlist)

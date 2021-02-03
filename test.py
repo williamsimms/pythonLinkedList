@@ -272,4 +272,5 @@ class LinkedListTest(unittest.TestCase):
         self.assertEqual(linkedlist.head.data, 4)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
