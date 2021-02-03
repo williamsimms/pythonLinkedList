@@ -25,7 +25,7 @@ class LinkedList:
 
         while current:
             linked_list += str(current.data)
-            linked_list += ' => '
+            linked_list += ' -> '
             current = current.next
 
         linked_list += 'None'
@@ -193,6 +193,38 @@ class LinkedList:
             node.data = new_data
             node = node.next
             counter += 1
+
+    def find_index(self, data):
+        if not self.head:
+            return
+
+        counter = 0
+        current = self.head
+
+        while current:
+            if current.data == data:
+                return counter
+
+            current = current.next
+            counter += 1
+
+    def contains(self, data):
+        if not self.head:
+            return False
+
+        current = self.head
+
+        while current:
+            if current.data == data:
+                return True
+
+            current = current.next
+
+        return False
+
+    def find(self, data):
+        if not self.head:
+            return
 
 
 if __name__ == '__main__':
