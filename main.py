@@ -1,23 +1,24 @@
 class Node:
 
-    def __init__(self, data, next=None):
+    def __init__(self, data, next=None) -> None:
         self.data = data
         self.next = next
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str({'data': self.data, 'next': self.next})
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str({'data': self.data, 'next': self.next})
 
 
 class LinkedList:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.head = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         linked_list = ''
+
         if not self.head:
             return None
 
@@ -31,16 +32,16 @@ class LinkedList:
         linked_list += 'None'
         return linked_list
 
-    def print(self):
+    def print(self) -> str:
         return str(self.head)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str(self.head)
 
-    def insert_first(self, data):
+    def insert_first(self, data) -> None:
         self.head = Node(data, self.head)
 
-    def length(self):
+    def length(self) -> int:
         if not self.head:
             return 0
 
@@ -53,16 +54,16 @@ class LinkedList:
 
         return counter
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.length()
 
-    def get_first(self):
+    def get_first(self) -> Node:
         if not self.head:
             return
 
         return self.head
 
-    def get_last(self):
+    def get_last(self) -> Node:
         if not self.head:
             return
 
@@ -76,10 +77,10 @@ class LinkedList:
 
         return node
 
-    def clear(self):
+    def clear(self) -> None:
         self.head = None
 
-    def remove_first(self):
+    def remove_first(self) -> None:
         if not self.head:
             return
 
@@ -89,7 +90,7 @@ class LinkedList:
 
         self.head = self.head.next
 
-    def remove_last(self):
+    def remove_last(self) -> None:
         if not self.head:
             return
 
@@ -106,7 +107,7 @@ class LinkedList:
 
         previous.next = None
 
-    def insert_last(self, data):
+    def insert_last(self, data) -> None:
         if not self.head:
             self.head = Node(data)
             return
@@ -115,7 +116,7 @@ class LinkedList:
 
         last.next = Node(data)
 
-    def get_at(self, index):
+    def get_at(self, index) -> Node or None:
         if not self.head:
             return
 
@@ -131,13 +132,13 @@ class LinkedList:
 
         return None
 
-    def __getitem__(self, index: int):
+    def __getitem__(self, index: int) -> Node or None:
         if type(index) != int:
             return
 
         return self.get_at(index)
 
-    def insert_at(self, index: int, data):
+    def insert_at(self, index: int, data) -> None:
         if not self.head:
             self.head = Node(data)
             return
@@ -150,7 +151,7 @@ class LinkedList:
         node = Node(data, previous_node.next)
         previous_node.next = node
 
-    def remove_at(self, index: int):
+    def remove_at(self, index: int) -> None:
         if not self.head:
             return
 
@@ -165,7 +166,7 @@ class LinkedList:
 
         previous.next = previous.next.next
 
-    def reverse(self):
+    def reverse(self) -> None:
         if not self.head:
             return
 
@@ -181,7 +182,7 @@ class LinkedList:
 
         self.head = previous
 
-    def for_each(self, fn):
+    def for_each(self, fn) -> None:
         if not self.head:
             return
 
@@ -194,7 +195,7 @@ class LinkedList:
             node = node.next
             counter += 1
 
-    def find_index(self, data):
+    def find_index(self, data) -> int:
         if not self.head:
             return
 
@@ -210,7 +211,7 @@ class LinkedList:
 
         return -1
 
-    def contains(self, data):
+    def contains(self, data) -> bool:
         if not self.head:
             return False
 
@@ -224,7 +225,7 @@ class LinkedList:
 
         return False
 
-    def find(self, data):
+    def find(self, data) -> Node or None:
         if not self.head:
             return
 
@@ -237,6 +238,26 @@ class LinkedList:
             current = current.next
 
         return None
+
+    def bubble_sort(self) -> None:
+        if not self.head or not self.head.next:
+            return
+
+        current = self.head
+        next = current.next
+
+        while current:
+            if current.data > next.data:
+                current.data = next.data
+                next.data = current.data
+
+        return None
+
+    def merger(self,) -> None:
+        pass
+
+    def merge_sort(self) -> None:
+        pass
 
 
 if __name__ == '__main__':
