@@ -239,25 +239,36 @@ class LinkedList:
 
         return None
 
-    def bubble_sort(self) -> None:
+    def sort(self) -> None:
         if not self.head or not self.head.next:
             return
 
         current = self.head
-        next = current.next
+        next = None
 
         while current:
-            if current.data > next.data:
-                current.data = next.data
-                next.data = current.data
+            next = current.next
+            while next:
+                if current.data > next.data:
+                    temp = current.data
+                    current.data = next.data
+                    next.data = temp
 
-        return None
+                next = next.next
 
-    def merger(self,) -> None:
+            current = current.next
+
+    def merger(self) -> None:
         pass
 
     def merge_sort(self) -> None:
         pass
+
+    def midpoint(self) -> int:
+        if not self.head:
+            return
+
+        current = self.head
 
 
 if __name__ == '__main__':
@@ -283,4 +294,7 @@ if __name__ == '__main__':
     print(linkedlist.get_last())
     print(linkedlist)
     linkedlist.reverse()
+    print(linkedlist)
+    print(linkedlist)
+    linkedlist.sort()
     print(linkedlist)
